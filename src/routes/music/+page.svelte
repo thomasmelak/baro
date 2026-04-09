@@ -3,12 +3,12 @@
 		{
 			title: 'ETHORICA',
 			year: 2026,
-			cover: '/images/ethorica.jpg'
+			cover: '/baro/images/ethorica.jpg'
 		},
 		{
 			title: 'Ethiopia',
 			year: 2017,
-			cover: '/images/ethiopia.jpg'
+			cover: '/baro/images/ethiopia.jpg'
 		},
 		{
 			title: 'Tikur sew',

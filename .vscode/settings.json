@@ -1,0 +1,10 @@
+{
+	"files.associations": {
+		"*.css": "tailwindcss"
+	},
+	"editor.formatOnSave": true,
+	"editor.formatOnPaste": true,
+	"editor.formatOnType": true,
+	"files.autoSave": "onFocusChange",
+	"svelte.plugin.svelte.format.config.singleQuote": true
+}

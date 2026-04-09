@@ -22,8 +22,8 @@
 				{hero.body}
 			</p>
 			<div class="flex space-x-4">
-				<a class="btn btn-primary" href="/music">Discography </a>
-				<a class="btn" href="/tour"> Tour dates</a>
+				<a class="btn btn-primary" href="/baro/music">Discography </a>
+				<a class="btn" href="/baro/tour"> Tour dates</a>
 			</div>
 		</div>
 	</div>

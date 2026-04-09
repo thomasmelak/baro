@@ -19,19 +19,19 @@ const currentYear = new Date().getFullYear();
 					<li>
 						<a
 							class="text-muted-foreground text-sm transition-colors hover:text-primary"
-							href="/music">Discography</a
+							href="/baro/music">Discography</a
 						>
 					</li>
 					<li>
 						<a
 							class="text-muted-foreground text-sm transition-colors hover:text-primary"
-							href="/music">Latest Release</a
+							href="/baro/music">Latest Release</a
 						>
 					</li>
 					<li>
 						<a
 							class="text-muted-foreground text-sm transition-colors hover:text-primary"
-							href="/music">Music Videos</a
+							href="/baro/music">Music Videos</a
 						>
 					</li>
 				</ul>
@@ -42,13 +42,13 @@ const currentYear = new Date().getFullYear();
 					<li>
 						<a
 							class="text-muted-foreground text-sm transition-colors hover:text-primary"
-							href="/tour">Upcoming Shows</a
+							href="/baro/tour">Upcoming Shows</a
 						>
 					</li>
 					<li>
 						<a
 							class="text-muted-foreground text-sm transition-colors hover:text-primary"
-							href="/tour">Past Events</a
+							href="/baro/tour">Past Events</a
 						>
 					</li>
 				</ul>
@@ -60,13 +60,13 @@ const currentYear = new Date().getFullYear();
 					<li>
 						<a
 							class="text-muted-foreground text-sm transition-colors hover:text-primary"
-							href="/contact">Contact</a
+							href="/baro/contact">Contact</a
 						>
 					</li>
 						<li>
 						<a
 							class="text-muted-foreground text-sm transition-colors hover:text-primary"
-							href="/contact">Press</a
+							href="/baro/contact">Press</a
 						>
 					</li>
 				</ul>

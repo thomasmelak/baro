@@ -2,6 +2,7 @@
 	import gsap from 'gsap';
 	import { SplitText } from 'gsap/SplitText';
 	import { onMount } from 'svelte';
+	const base = '/baro'
 
 	onMount(() => {
 		const navToggler = document.querySelector('.nav-toggler');
@@ -103,24 +104,24 @@
 		<div class="flex w-full max-w-7xl flex-col justify-center gap-8 md:flex-row">
 			<div class="nav-items-col flex-col-reverse items-start md:flex-col">
 				<div class="socials flex flex-col gap-1">
-					<a href="/">Youtube</a>
-					<a href="/">Twitter</a>
-					<a href="/tour">Facebook</a>
-					<a href="/music">Instagram</a>
-					<a href="/contact">Contact</a>
+					<a href="{base}">Youtube</a>
+					<a href="{base}">Twitter</a>
+					<a href="{base}/tour">Facebook</a>
+					<a href="{base}/music">Instagram</a>
+					<a href="{base}/contact">Contact</a>
 				</div>
 				<div class="legal hidden flex-col gap-1 md:flex">
 					<a href="/">Cookie Policy</a>
-					<a href="/tour">Disclosures</a>
-					<a href="/music">Press</a>
+					<a href="{base}/tour">Disclosures</a>
+					<a href="{base}/music">Press</a>
 				</div>
 			</div>
 			<div class="nav-items-col items-end">
 				<div class="nav-primary-links flex flex-col gap-4">
-					<a href="/">Home</a>
-					<a href="/music">Music</a>
-					<a href="/tour">Tour</a>
-					<a href="/">Press</a>
+					<a href="{base}/">Home</a>
+					<a href="{base}/music">Music</a>
+					<a href="{base}/tour">Tour</a>
+					<a href="{base}">Press</a>
 				</div>
 			</div>
 		</div>

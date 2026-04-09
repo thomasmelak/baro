@@ -30,8 +30,7 @@ const config = {
 
 		adapter: adapter({
 			pages: 'dist',
-			assets: 'dist',
-			fallback: 'index.html'
+			assets: 'dist'
 		}),
 		paths: {
 			assets: process.argv.includes('dev') ? '' : process.env.BASE_PATH,

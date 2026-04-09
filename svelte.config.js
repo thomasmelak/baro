@@ -30,11 +30,10 @@ const config = {
 
 		adapter: adapter({
 			pages: 'dist',
-			assets: 'dist',
-			fallback: null
+			assets: 'dist'
 		}),
 		paths: {
-			base: '/baro/dist'
+			base: process.argv.includes('dev') ? '' : process.env.BASE_PATH
 		}
 	}
 };

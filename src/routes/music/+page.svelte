@@ -3,7 +3,7 @@
 		{
 			title: 'ETHORICA',
 			year: 2026,
-			cover: '/baro/images/ethorica.jpg'
+			cover: '/baro/images/ethorica.jpeg'
 		},
 		{
 			title: 'Ethiopia',

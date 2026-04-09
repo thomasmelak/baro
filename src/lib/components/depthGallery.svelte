@@ -1,13 +1,13 @@
 <script lang="ts">
 	let slides = $state([
 		{
-			url: '/baro/images/ethorica.jpg',
+			url: '/images/ethorica.jpg',
 			id: 0,
 			description: 'ETHORICA',
 			year: 2026
 		},
 		{
-			url: '/baro/images/ethiopia.jpg',
+			url: '/images/ethiopia.jpg',
 			id: 0,
 			description: 'Ethiopia',
 			year: 2017

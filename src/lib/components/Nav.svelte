@@ -29,8 +29,8 @@
 			linkBlocks.forEach((selector) => {
 				gsap.fromTo(
 					selector,
-					{ y: '100%' },
-					{ y: '0%', duration: 0.75, stagger: 0.05, ease: ease, delay: 0.5 },
+					{ y: '0%', x:'100%' },
+					{ y: '0%', x:'0%', duration: 0.75, stagger: 0.05, ease: ease, delay: 0.5 },
 				)
 			})
 		}
@@ -40,7 +40,7 @@
 				isAnimating = false	
 			},
 			onReverseComplete: () => {
-				gsap.set(linkBlocks.join(', '), { y: '100%' })
+				gsap.set(linkBlocks.join(', '), { x: '100%' })
 				isAnimating = false
 			},
 		})
@@ -122,7 +122,7 @@
 				</div>
 			</div>
 			<div class="nav-items-col items-end">
-				<div class="nav-primary-links flex flex-col gap-4">
+				<div class="nav-primary-links flex flex-col gap-4 font-serif">
 					<a href={base}>Home</a>
 					<a href="{base}music">Music</a>
 					<a href="{base}tour">Tour</a>

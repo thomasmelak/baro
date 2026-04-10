@@ -29,7 +29,7 @@
 			linkBlocks.forEach((selector) => {
 				gsap.fromTo(
 					selector,
-					{ y: '0%', x:'100%' },
+					{ y: '0%', x:'-100%' },
 					{ y: '0%', x:'0%', duration: 0.75, stagger: 0.05, ease: ease, delay: 0.5 },
 				)
 			})
@@ -106,7 +106,7 @@
 	<div class="nav-bg"></div>
 	<div class="nav-bg"></div>
 	<div class="nav-items place-content-center px-8 md:py-32">
-		<div class="flex w-full max-w-7xl flex-col justify-center gap-8 md:flex-row">
+		<div class="flex w-full max-w-7xl flex-col justify-end mb-32 gap-8 md:flex-row">
 			<div class="nav-items-col flex-col-reverse items-start md:flex-col">
 				<div class="socials flex flex-col gap-1">
 					<a href={base}>Youtube</a>
@@ -122,7 +122,7 @@
 				</div>
 			</div>
 			<div class="nav-items-col items-end">
-				<div class="nav-primary-links flex flex-col gap-4 font-serif">
+				<div class="nav-primary-links flex flex-col gap-4 font-bold">
 					<a href={base}>Home</a>
 					<a href="{base}music">Music</a>
 					<a href="{base}tour">Tour</a>

@@ -1,97 +1,102 @@
 <script lang="ts">
-	import gsap from 'gsap';
-	import { SplitText } from 'gsap/SplitText';
-	import { onMount } from 'svelte';
-	const base = '/baro'
+	import gsap from 'gsap'
+	import { SplitText } from 'gsap/SplitText'
+	import { onMount } from 'svelte'
+
+	import { base } from '$lib'
 
 	onMount(() => {
-		const navToggler = document.querySelector('.nav-toggler');
-		const navBarContainer = document.querySelector('.nav-container');
-		const navBgs = document.querySelectorAll('.nav-bg');
-		const itemsContainer = document.querySelector('.nav-items');
-		const itemContent = document.querySelector('.nav-content');
-		const ease = 'power3.inOut';
-		gsap.registerPlugin(SplitText);
+		const navToggler = document.querySelector('.nav-toggler')
+		const navBarContainer = document.querySelector('.nav-container')
+		const navBgs = document.querySelectorAll('.nav-bg')
+		const itemsContainer = document.querySelector('.nav-items')
+		const itemContent = document.querySelector('.nav-content')
+		const ease = 'power3.inOut'
+		gsap.registerPlugin(SplitText)
 
-		let isMenuOpen = false;
-		let isAnimating = false;
-		const linkBlocks = ['.socials .line, .legal .line', '.nav-primary-links .line'];
+		let isMenuOpen = false
+		let isAnimating = false
+		const linkBlocks = ['.socials .line, .legal .line', '.nav-primary-links .line']
 
-		SplitText.create('.nav-items a', {
-			type: 'lines',
-			mask: 'lines',
-			linesClass: 'line'
-		});
+		document.fonts.ready.then((_) => {
+			SplitText.create('.nav-items a', {
+				type: 'lines',
+				mask: 'lines',
+				linesClass: 'line',
+			})
+		})
 		function animateLinksIn() {
 			linkBlocks.forEach((selector) => {
 				gsap.fromTo(
 					selector,
 					{ y: '100%' },
-					{ y: '0%', duration: 0.75, stagger: 0.05, ease: ease, delay: 0.5 }
-				);
-			});
+					{ y: '0%', duration: 0.75, stagger: 0.05, ease: ease, delay: 0.5 },
+				)
+			})
 		}
 		const timeline1 = gsap.timeline({
 			paused: true,
 			onComplete: () => {
-				isAnimating = false;
-				console.log('done');
+				isAnimating = false	
 			},
 			onReverseComplete: () => {
-				gsap.set(linkBlocks.join(', '), { y: '100%' });
-				isAnimating = false;
-			}
-		});
+				gsap.set(linkBlocks.join(', '), { y: '100%' })
+				isAnimating = false
+			},
+		})
 
 		function toggleMenu() {
-			if (isAnimating) return;
-			isAnimating = true;
-			navToggler?.classList.toggle('open');
-			itemContent?.classList.toggle('pointer-events-none');
+			if (isAnimating) return
+			isAnimating = true
+			navToggler?.classList.toggle('open')
+			itemContent?.classList.toggle('pointer-events-none')
 
 			if (!isMenuOpen) {
-				timeline1.play();
-				animateLinksIn();
+				timeline1.play()
+				animateLinksIn()
 			} else {
-				timeline1.reverse();
+				timeline1.reverse()
 			}
-			isMenuOpen = !isMenuOpen;
-			navBarContainer?.classList.toggle('text-primary-content');
-						navBarContainer?.classList.toggle('bg-base-content/10');
+			isMenuOpen = !isMenuOpen
+			navBarContainer?.classList.toggle('text-primary-content')
+			navBarContainer?.classList.toggle('bg-base-content/30')
 		}
-		itemsContainer?.addEventListener('click', toggleMenu);
+		itemsContainer?.addEventListener('click', toggleMenu)
 
-		navToggler?.addEventListener('click', toggleMenu);
+		navToggler?.addEventListener('click', toggleMenu)
 		timeline1.to(navBgs, {
 			scaleY: 1,
 			duration: 0.5,
 			stagger: 0.1,
-			ease: ease
-		});
+			ease: ease,
+		})
 		timeline1.to(
 			'.nav-items',
 			{
 				clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
 				duration: 0.75,
 				ease: ease,
-				delay: 0.1
+				delay: 0.1,
 			},
-			'-=0.6'
-		);
-	});
+			'-=0.6',
+		)
+	})
 </script>
 
-<div class="nav-container fixed z-2 flex w-full place-content-center p-8 backdrop-blur-md  bg-base-content/10">
+<div
+	class="nav-container fixed z-2 flex w-full place-content-center bg-base-content/30 p-8 backdrop-blur-md">
 	<nav class="flex w-full max-w-7xl items-center justify-between">
 		<div class="nav-logo flex items-center">
-			<a href="/" class="font-serif text-2xl uppercase transition-colors ease-in-out">Teddy Afro</a>
+			<a href={base} class="font-serif text-2xl uppercase transition-colors ease-in-out">
+				Teddy Afro
+			</a>
 		</div>
 		<button
 			aria-label="menu"
 			tabindex="0"
-			class="nav-toggler flex flex-col content-center items-center gap-1"
-		>
-			<span></span><span></span>
+			class="nav-toggler flex flex-col content-center items-center gap-1">
+			<span></span>
+			<span></span>
 		</button>
 	</nav>
 </div>
@@ -104,24 +109,24 @@
 		<div class="flex w-full max-w-7xl flex-col justify-center gap-8 md:flex-row">
 			<div class="nav-items-col flex-col-reverse items-start md:flex-col">
 				<div class="socials flex flex-col gap-1">
-					<a href="{base}">Youtube</a>
-					<a href="{base}">Twitter</a>
-					<a href="{base}/tour">Facebook</a>
-					<a href="{base}/music">Instagram</a>
-					<a href="{base}/contact">Contact</a>
+					<a href={base}>Youtube</a>
+					<a href={base}>Twitter</a>
+					<a href="{base}tour">Facebook</a>
+					<a href="{base}music">Instagram</a>
+					<a href="{base}contact">Contact</a>
 				</div>
 				<div class="legal hidden flex-col gap-1 md:flex">
-					<a href="/">Cookie Policy</a>
-					<a href="{base}/tour">Disclosures</a>
-					<a href="{base}/music">Press</a>
+					<a href={base}>Cookie Policy</a>
+					<a href="{base}tour">Disclosures</a>
+					<a href="{base}music">Press</a>
 				</div>
 			</div>
 			<div class="nav-items-col items-end">
 				<div class="nav-primary-links flex flex-col gap-4">
-					<a href="{base}/">Home</a>
-					<a href="{base}/music">Music</a>
-					<a href="{base}/tour">Tour</a>
-					<a href="{base}">Press</a>
+					<a href={base}>Home</a>
+					<a href="{base}music">Music</a>
+					<a href="{base}tour">Tour</a>
+					<a href={base}>Press</a>
 				</div>
 			</div>
 		</div>

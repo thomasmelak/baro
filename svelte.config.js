@@ -1,42 +1,45 @@
-import adapter from '@sveltejs/adapter-static';
-import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
-import { relative, sep } from 'node:path';
+import adapter from '@sveltejs/adapter-static'
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte'
+import { relative, sep } from 'node:path'
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	compilerOptions: {
 		// defaults to rune mode for the project, except for `node_modules`. Can be removed in svelte 6.
 		runes: ({ filename }) => {
-			const relativePath = relative(import.meta.dirname, filename);
-			const pathSegments = relativePath.toLowerCase().split(sep);
-			const isExternalLibrary = pathSegments.includes('node_modules');
+			const relativePath = relative(import.meta.dirname, filename)
+			const pathSegments = relativePath.toLowerCase().split(sep)
+			const isExternalLibrary = pathSegments.includes('node_modules')
 
-			return isExternalLibrary ? undefined : true;
+			return isExternalLibrary ? undefined : true
 		},
 		fragments: 'html',
-		css: 'external'
+		css: 'external',
 	},
 	vitePlugin: {
-		prebundleSvelteLibraries: true
+		prebundleSvelteLibraries: true,
 	},
 	preprocess: vitePreprocess(),
 	kit: {
 		router: {
-			type: 'pathname'
+			type: 'pathname',
 		},
 		output: {
-			bundleStrategy: 'single'
+			bundleStrategy: 'split',
+			preloadStrategy: 'modulepreload',
 		},
 
 		adapter: adapter({
+			precompress: true,
+			strict: true,
 			pages: 'dist',
-			assets: 'dist'
+			assets: 'dist',
 		}),
 		paths: {
 			assets: process.argv.includes('dev') ? '' : process.env.BASE_PATH,
-			base: process.argv.includes('dev') ? '' : process.env.BASE_PATH
-		}
-	}
-};
+			base: process.argv.includes('dev') ? '' : process.env.BASE_PATH,
+		},
+	},
+}
 
-export default config;
+export default config

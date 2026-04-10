@@ -1,42 +1,43 @@
 <script lang="ts">
-	import { base } from '$lib';
+	import { base } from '$lib'
+	import Image from '$lib/components/Image.svelte'
 
 	let albums = [
 		{
 			title: 'ETHORICA',
 			year: 2026,
-			cover: `${base}images/ethorica.jpeg`
+			cover: `${base}images/ethorica.jpeg`,
 		},
 		{
 			title: 'Ethiopia',
 			year: 2017,
-			cover: `${base}images/ethiopia.jpg`
+			cover: `${base}images/ethiopia.jpg`,
 		},
 		{
 			title: 'Tikur sew',
 			year: 2012,
-			cover: 'https://upload.wikimedia.org/wikipedia/en/c/c8/Tikur_Sew_single_Teddy_Afro.jpeg'
+			cover: 'https://upload.wikimedia.org/wikipedia/en/c/c8/Tikur_Sew_single_Teddy_Afro.jpeg',
 		},
 		{
 			title: 'Yasteseryal',
 			year: 2005,
-			cover: 'https://www.teddyafromuzika.com/wp-content/uploads/2015/12/abogida.jpg'
+			cover: 'https://www.teddyafromuzika.com/wp-content/uploads/2015/12/abogida.jpg',
 		},
-			{
+		{
 			title: 'Teddy',
 			year: 2002,
-			cover: 'https://www.teddyafromuzika.com/wp-content/uploads/2015/12/abogida.jpg'
+			cover: 'https://www.teddyafromuzika.com/wp-content/uploads/2015/12/abogida.jpg',
 		},
 		{
 			title: 'Abugida',
 			year: 2001,
-			cover: 'https://www.teddyafromuzika.com/wp-content/uploads/2015/12/abogida.jpg'
-		}
-	];
+			cover: 'https://www.teddyafromuzika.com/wp-content/uploads/2015/12/abogida.jpg',
+		},
+	]
 
 	let { showTop } = $props<{
-		showTop?: boolean;
-	}>();
+		showTop?: boolean
+	}>()
 </script>
 
 <div class="mx-auto w-full max-w-7xl">
@@ -56,9 +57,8 @@
 		{#each showTop ? albums.splice(0, 2) : albums as album}
 			<a
 				href="{base}music"
-				class="group flex flex-1 flex-col items-stretch overflow-hidden rounded-3xl border border-base-content/20 bg-base-200 shadow-sm lg:flex-row"
-			>
-				<img class="object-cover lg:w-1/2 aspect-square" src={album.cover} alt={album.title} />
+				class="group flex flex-1 flex-col items-stretch overflow-hidden rounded-3xl border border-base-content/20 bg-base-200 shadow-sm lg:flex-row">
+				<Image css="aspect-square object-cover lg:w-1/2" src={album.cover} />
 				<div class="flex flex-col justify-end p-8">
 					<h2 class="text-2xl font-bold group-hover:text-primary">{album.title}</h2>
 					<h4 class="mb-4 font-light text-base-content/60">{album.year}</h4>

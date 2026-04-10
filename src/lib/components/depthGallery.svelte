@@ -1,96 +1,98 @@
 <script lang="ts">
-	import { base } from '$lib';
-	import { gsap } from 'gsap';
-	import { ScrollTrigger } from 'gsap/ScrollTrigger';
+	import { base } from '$lib'
+	import { gsap } from 'gsap'
+	import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-	import { onMount } from 'svelte';
+	import { onMount } from 'svelte'
 	let slides = $state([
 		{
 			url: `${base}images/ethorica.jpeg`,
 			id: 0,
 			description: 'ETHORICA',
-			year: 2026
+			year: 2026,
 		},
 		{
 			url: `${base}images/ethiopia.jpg`,
 			id: 0,
 			description: 'Ethiopia',
-			year: 2017
+			year: 2017,
 		},
 		{
 			url: 'https://upload.wikimedia.org/wikipedia/en/c/c8/Tikur_Sew_single_Teddy_Afro.jpeg',
 			id: 0,
 			description: 'Tikur Sew',
-			year: 2012
-		}
-	]);
+			year: 2012,
+		},
+	])
 
-	gsap.registerPlugin(ScrollTrigger);
+	gsap.registerPlugin(ScrollTrigger)
 
 	// svelte-ignore state_referenced_locally
-	const isOddLength: boolean = slides.length % 2 != 0;
+	const isOddLength: boolean = slides.length % 2 != 0
 	onMount(() => {
-		slides = slides.reverse();
+		slides = slides.reverse()
 
-		slides.forEach((slide, index) => (slide.id = index));
+		slides.forEach((slide, index) => (slide.id = index))
 		// slides = slides.toReversed();
-		const slidesContainer = document.querySelector('.active-slide');
-		const slidesElements: Array<HTMLElement> = gsap.utils.toArray('.slide');
-		const activeSlideImages: Array<HTMLElement> = gsap.utils.toArray('.active-slide img');
+		const slidesContainer = document.querySelector('.active-slide')
+		const slidesElements: Array<HTMLElement> = gsap.utils.toArray('.slide')
+		const activeSlideImages: Array<HTMLElement> = gsap.utils.toArray('.active-slide img')
 
 		slidesElements.forEach(
 			(element, index) =>
-				(element.style.transform = `translateX(0%) translateY(-50%) translateZ(${(slidesElements.length - index - 1) * -2000}px)`)
-		);
+				(element.style.transform = `translateX(0%) translateY(-50%) translateZ(${(slidesElements.length - index - 1) * -2000}px)`),
+		)
 		function getInitialTranslateZ(slide: any) {
-			const style = window.getComputedStyle(slide);
-			const matrix = style.transform.match(/matrix3d\((.+)\)/);
+			const style = window.getComputedStyle(slide)
+			const matrix = style.transform.match(/matrix3d\((.+)\)/)
 			if (matrix) {
-				const values = matrix[1].split(', ');
-				return parseFloat(values[14] || '0.0');
+				const values = matrix[1].split(', ')
+				return parseFloat(values[14] || '0.0')
 			}
-			return 0;
+			return 0
 		}
 		function mapRange(value: number, inMin: number, inMax: number, outMin: number, outMax: number) {
-			return ((value - inMin) * (outMax - outMin)) / (inMax - inMin) + outMin;
+			return ((value - inMin) * (outMax - outMin)) / (inMax - inMin) + outMin
 		}
 		slidesElements.forEach((slide: HTMLElement, index) => {
-			const initialZ = getInitialTranslateZ(slide);
-			ScrollTrigger.create({
+			const initialZ = getInitialTranslateZ(slide)
+			const trigger = ScrollTrigger.create({
 				trigger: '.container',
 				start: 'top top',
 				end: 'bottom bottom',
 				scrub: true,
+				pin: '.slide',
+				pinnedContainer: '.slider',
 
 				onUpdate: (self) => {
-					const progress = self.progress;
-					const zIncrement = progress * 1850 * slides.length;
-					const currentZ = initialZ + zIncrement;
-					let opacity;
+					const progress = self.progress
+					const zIncrement = progress * 1850 * slides.length
+					const currentZ = initialZ + zIncrement
+					let opacity
+				
 					if (currentZ > -2000) {
-						opacity = mapRange(currentZ, -2000, 0, 0.5, 1);
+						opacity = mapRange(currentZ, -2000, 0, 0.5, 1)
 					} else {
-						opacity = mapRange(currentZ, -5000, -2000, 0, 0);
+						opacity = mapRange(currentZ, -5000, -2000, 0, 0)
 					}
-					slide.style.opacity = opacity.toString();
-					slide.style.transform = `translateX(0%) translateY(-50%) translateZ(${currentZ}px)`;
+					slide.style.opacity = opacity.toString()
+					slide.style.transform = `translateX(0%) translateY(-50%) translateZ(${currentZ}px)`
 
 					if (currentZ < 300) {
-						gsap.to(activeSlideImages[index], { opacity: 1, ease: 'power3.out' });
+						gsap.to(activeSlideImages[index], { opacity: 1, ease: 'power3.out' })
 					} else {
-
-						gsap.to(activeSlideImages[index], { opacity: index === 0 ? 1 : 0, ease: 'power3.out' });
+						gsap.to(activeSlideImages[index], { opacity: index === 0 ? 1 : 0, ease: 'power3.out' })
 					}
 					if (progress == 1) {
-						gsap.to(slidesContainer, { opacity: 0, ease: 'power3.out' });
+						gsap.to(slidesContainer, { opacity: 0, ease: 'power3.out' })
 					} else {
-						gsap.to(slidesContainer, { opacity: 1, ease: 'power3.out' });
+						gsap.to(slidesContainer, { opacity: 1, ease: 'power3.out' })
 					}
-			
-				}
+				},
 			});
-		});
-	});
+			trigger.pin?.classList.add('invisible')
+		})
+	})
 </script>
 
 <div class="relative -z-10 container -m-8 -mt-32">
@@ -106,13 +108,11 @@
 				class:lg:flex-row-reverse={isOddLength ? slide.id % 2 != 0 : slide.id % 2 == 0}
 				class:opacity-100={slide.id == slides.length - 1}
 				class:opacity-0={slide.id < slides.length - 1}
-				class="slide flex w-full max-w-[1/2vw] flex-col justify-end gap-4 lg:max-w-300 lg:flex-row"
-			>
+				class="slide flex w-full max-w-[1/2vw] flex-col justify-end gap-4 lg:max-w-300 lg:flex-row">
 				<div
 					class:lg:items-end={isOddLength ? slide.id % 2 == 0 : slide.id % 2 != 0}
 					class:lg:items-baseline={isOddLength ? slide.id % 2 != 0 : slide.id % 2 == 0}
-					class="slide-copy flex flex-col content-end items-center justify-end gap-4 self-center lg:self-end"
-				>
+					class="slide-copy flex flex-col content-end items-center justify-end gap-4 self-center lg:self-end">
 					{#if slide.description}
 						<p class="font-serif text-3xl text-primary">{slide.description}</p>
 						<p>{slide.year}</p>

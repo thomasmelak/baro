@@ -106,7 +106,7 @@
 	<div class="nav-bg"></div>
 	<div class="nav-bg"></div>
 	<div class="nav-items place-content-center px-8 md:py-32">
-		<div class="flex w-full max-w-7xl flex-col justify-end mb-32 gap-8 md:flex-row">
+		<div class="flex w-full max-w-7xl flex-col justify-end mb-32 gap-24 md:flex-row">
 			<div class="nav-items-col flex-col-reverse items-start md:flex-col">
 				<div class="socials flex flex-col gap-1">
 					<a href={base}>Youtube</a>

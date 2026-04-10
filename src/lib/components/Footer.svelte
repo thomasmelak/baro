@@ -1,12 +1,13 @@
 <script lang="ts">
 const currentYear = new Date().getFullYear();
+import { base } from '$lib';
 </script>
 
 <footer class="bg-card border-border border-t">
 	<div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
 		<div class="grid grid-cols-2 gap-8 md:grid-cols-4">
 			<div class="col-span-2 md:col-span-1">
-				<a class="mb-4 flex items-center gap-2" href="/">
+				<a class="mb-4 flex items-center gap-2" href="{base}">
 					<span class="text-xl font-bold font-serif">TEDDY AFRO</span></a
 				>
 				<p class="text-muted-foreground text-sm leading-relaxed">
@@ -19,19 +20,19 @@ const currentYear = new Date().getFullYear();
 					<li>
 						<a
 							class="text-muted-foreground text-sm transition-colors hover:text-primary"
-							href="/baro/music">Discography</a
+							href="{base}music">Discography</a
 						>
 					</li>
 					<li>
 						<a
 							class="text-muted-foreground text-sm transition-colors hover:text-primary"
-							href="/baro/music">Latest Release</a
+							href="{base}music">Latest Release</a
 						>
 					</li>
 					<li>
 						<a
 							class="text-muted-foreground text-sm transition-colors hover:text-primary"
-							href="/baro/music">Music Videos</a
+							href="{base}music">Music Videos</a
 						>
 					</li>
 				</ul>
@@ -42,13 +43,13 @@ const currentYear = new Date().getFullYear();
 					<li>
 						<a
 							class="text-muted-foreground text-sm transition-colors hover:text-primary"
-							href="/baro/tour">Upcoming Shows</a
+							href="{base}tour">Upcoming Shows</a
 						>
 					</li>
 					<li>
 						<a
 							class="text-muted-foreground text-sm transition-colors hover:text-primary"
-							href="/baro/tour">Past Events</a
+							href="{base}tour">Past Events</a
 						>
 					</li>
 				</ul>
@@ -60,13 +61,13 @@ const currentYear = new Date().getFullYear();
 					<li>
 						<a
 							class="text-muted-foreground text-sm transition-colors hover:text-primary"
-							href="/baro/contact">Contact</a
+							href="{base}contact">Contact</a
 						>
 					</li>
 						<li>
 						<a
 							class="text-muted-foreground text-sm transition-colors hover:text-primary"
-							href="/baro/contact">Press</a
+							href="{base}contact">Press</a
 						>
 					</li>
 				</ul>
@@ -77,7 +78,7 @@ const currentYear = new Date().getFullYear();
 		>
 			<div class="flex items-center gap-4">
 				<a
-					href="/"
+					href="{base}"
 					target="_blank"
 					rel="noopener noreferrer"
 					class="text-muted-foreground transition-colors hover:text-primary"
@@ -99,7 +100,7 @@ const currentYear = new Date().getFullYear();
 						></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg
 					></a
 				><a
-					href="/"
+					href="{base}"
 					target="_blank"
 					rel="noopener noreferrer"
 					class="text-muted-foreground transition-colors hover:text-primary"
@@ -121,7 +122,7 @@ const currentYear = new Date().getFullYear();
 						></path></svg
 					></a
 				><a
-					href="/"
+					href="{base}"
 					target="_blank"
 					rel="noopener noreferrer"
 					class="text-muted-foreground transition-colors hover:text-primary"
@@ -142,7 +143,7 @@ const currentYear = new Date().getFullYear();
 						></path></svg
 					></a
 				><a
-					href="/"
+					href="{base}"
 					target="_blank"
 					rel="noopener noreferrer"
 					class="text-muted-foreground transition-colors hover:text-primary"

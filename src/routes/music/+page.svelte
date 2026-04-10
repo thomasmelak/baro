@@ -1,14 +1,16 @@
 <script lang="ts">
+	import { base } from '$lib';
+
 	let albums = [
 		{
 			title: 'ETHORICA',
 			year: 2026,
-			cover: '/baro/images/ethorica.jpeg'
+			cover: `${base}images/ethorica.jpeg`
 		},
 		{
 			title: 'Ethiopia',
 			year: 2017,
-			cover: '/baro/images/ethiopia.jpg'
+			cover: `${base}images/ethiopia.jpg`
 		},
 		{
 			title: 'Tikur sew',
@@ -46,14 +48,14 @@
 			</p>
 		</div>
 		{#if showTop}
-			<a href="/music" class="btn w-full btn-outline btn-primary sm:w-auto">Show more</a>
+			<a href="{base}music" class="btn w-full btn-outline btn-primary sm:w-auto">Show more</a>
 		{/if}
 	</div>
 
 	<div class="grid grid-cols-1 flex-wrap gap-8 md:grid-cols-2">
 		{#each showTop ? albums.splice(0, 2) : albums as album}
 			<a
-				href="/music"
+				href="{base}music"
 				class="group flex flex-1 flex-col items-stretch overflow-hidden rounded-3xl border border-base-content/20 bg-base-200 shadow-sm lg:flex-row"
 			>
 				<img class="object-cover lg:w-1/2 aspect-square" src={album.cover} alt={album.title} />

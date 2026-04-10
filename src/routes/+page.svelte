@@ -1,15 +1,14 @@
 <script>
-	import { resolve } from '$app/paths';
+	import { base } from '$lib';
 	import Depth from '$lib/components/depthGallery.svelte';
 	import Music from './music/+page.svelte';
 	import Tour from './tour/+page.svelte';
-	const base = resolve("/")
-	let hero = {
+
+		let hero = {
 		heading: 'TEDDY AFRO',
 		subheading: 'The voice of unity and love',
 		body: 'Experience the powerful music that has touched millions of hearts across the globe. A celebration of Ethiopian heritage and the universal language of love.'
 	};
-	console.log(base, 'base here');
 </script>
 
 <section
@@ -26,7 +25,7 @@
 			</p>
 			<div class="flex space-x-4">
 				<a class="btn btn-primary" href='{base}music'>Discography </a>
-				<a class="btn" href="{base}/tour"> Tour dates</a>
+				<a class="btn" href="{base}tour"> Tour dates</a>
 			</div>
 		</div>
 	</div>

@@ -1,13 +1,18 @@
 <script lang="ts">
+	import { base } from '$lib';
+	import { gsap } from 'gsap';
+	import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+	import { onMount } from 'svelte';
 	let slides = $state([
 		{
-			url: '/baro/images/ethorica.jpeg',
+			url: `${base}images/ethorica.jpeg`,
 			id: 0,
 			description: 'ETHORICA',
 			year: 2026
 		},
 		{
-			url: '/baro/images/ethiopia.jpg',
+			url: `${base}images/ethiopia.jpg`,
 			id: 0,
 			description: 'Ethiopia',
 			year: 2017
@@ -18,41 +23,8 @@
 			description: 'Tikur Sew',
 			year: 2012
 		}
-		// {
-		// 	url: 'https://plus.unsplash.com/premium_photo-1683147850018-447471b3d00c?q=80&w=400',
-		// 	id: 0,
-		// 	description:
-		// 		'Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, aut exercitationem obcaecati placeat quaerat enim corporis consequuntur sed eius voluptates, itaque eos omnis in facere nemo nesciunt suscipit totam. Consequuntur?'
-		// },
-		// {
-		// 	url: 'https://images.unsplash.com/photo-1742540425845-8d8dabe893ca?q=80&w=400',
-		// 	id: 0,
-		// 	description:
-		// 		'Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, aut exercitationem obcaecati placeat quaerat enim corporis consequuntur sed eius voluptates, itaque eos omnis in facere nemo nesciunt suscipit totam. Consequuntur?'
-		// },
-		// {
-		// 	url: 'https://plus.unsplash.com/premium_photo-1683147850018-447471b3d00c?q=80&w=400',
-		// 	id: 0,
-		// 	description:
-		// 		'Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, aut exercitationem obcaecati placeat quaerat enim corporis consequuntur sed eius voluptates, itaque eos omnis in facere nemo nesciunt suscipit totam. Consequuntur?'
-		// },
-		// {
-		// 	url: 'https://images.unsplash.com/photo-1742540425845-8d8dabe893ca?q=80&w=400',
-		// 	id: 0,
-		// 	description:
-		// 		'Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, aut exercitationem obcaecati placeat quaerat enim corporis consequuntur sed eius voluptates, itaque eos omnis in facere nemo nesciunt suscipit totam. Consequuntur?'
-		// },
-		// {
-		// 	url: 'https://plus.unsplash.com/premium_photo-1683147850018-447471b3d00c?q=80&w=400',
-		// 	id: 0,
-		// 	description:
-		// 		'Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, aut exercitationem obcaecati placeat quaerat enim corporis consequuntur sed eius voluptates, itaque eos omnis in facere nemo nesciunt suscipit totam. Consequuntur?'
-		// }
 	]);
-	import { gsap } from 'gsap';
-	import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-	import { onMount } from 'svelte';
 	gsap.registerPlugin(ScrollTrigger);
 
 	// svelte-ignore state_referenced_locally

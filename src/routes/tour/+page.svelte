@@ -1,4 +1,5 @@
 <script lang="ts">
+import { base } from '$lib';
 	let tourDates = [
 		{
 			name: 'Ethorica tour',
@@ -34,7 +35,7 @@
 			</p>
 		</div>
 		{#if showTop}
-			<a href="/tour" class="btn w-full btn-outline btn-primary sm:w-auto">View all dates</a>
+			<a href="{base}tour" class="btn w-full btn-outline btn-primary sm:w-auto">View all dates</a>
 		{/if}
 	</div>
 

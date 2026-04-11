@@ -1,4 +1,6 @@
 <script>
+	import DepthGallery from "$lib/components/depthGallery.svelte"
+
 	let form = {
 		name: '',
 		email: '',
@@ -10,7 +12,7 @@
 	// }
 </script>
 
-<div class="mx-auto w-full max-w-7xl">
+<!-- <div class="mx-auto w-full max-w-7xl">
 	<h1 class="mb-4 text-3xl font-bold text-white">Contact</h1>
 
 	<form
@@ -51,4 +53,6 @@
 			Send
 		</button>
 	</form>
-</div>
+</div> -->
+
+<DepthGallery />

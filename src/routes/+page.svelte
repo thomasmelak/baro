@@ -31,28 +31,29 @@
 	}
 </script>
 
-<section
-	class="-mt-32 -ml-8 flex h-screen w-screen bg-linear-180 from-base-100 to-transparent px-8 py-24 backdrop-blur-2xl lg:bg-transparent lg:from-transparent lg:backdrop-blur-none">
-	<div class="mx-auto flex w-screen max-w-7xl items-center">
-		<div class="hero-text lg:w-1/2">
-			<p class="mb-0 font-serif text-3xl leading-relaxed font-extrabold text-primary">
-				{hero.subheading}
-			</p>
-			<h1 class="mb-0 text-5xl leading-relaxed font-extrabold">{hero.heading}</h1>
-			<p class="text-xl opacity-90">
-				{hero.body}
-			</p>
-			<div class="mt-10 flex space-x-4">
-				<a class="btn btn-primary" href="{base}music">Discography</a>
-				<a class="btn" href="{base}tour">Tour dates</a>
+<div class="relative -mt-32  py-24" >
+	<section
+		class="absolute top-0   px-8 -ml-8 flex h-screen w-screen bg-linear-180 from-base-100 to-transparent  backdrop-blur-2xl lg:bg-transparent lg:from-transparent lg:backdrop-blur-none">
+		<div class="mx-auto flex w-screen max-w-7xl items-center">
+			<div class="hero-text lg:w-1/2">
+				<p class="mb-0 font-serif text-3xl leading-relaxed font-extrabold text-primary">
+					{hero.subheading}
+				</p>
+				<h1 class="mb-0 text-5xl leading-relaxed font-extrabold">{hero.heading}</h1>
+				<p class="text-xl opacity-90">
+					{hero.body}
+				</p>
+				<div class="mt-10 flex space-x-4">
+					<a class="btn btn-primary" href="{base}music">Discography</a>
+					<a class="btn" href="{base}tour">Tour dates</a>
+				</div>
 			</div>
 		</div>
-	</div>
-</section>
+	</section>
+	<Depth />
+</div>
 
-<Depth />
-
-<div class="mx-auto mt-32 flex max-w-7xl flex-col gap-32">
+<div class="z-10 mx-auto mt-32 flex max-w-7xl flex-col gap-32">
 	<Tour showTop />
 	<Music showTop />
 
